@@ -1,0 +1,3 @@
+Employee: Safrin
+Department: IT
+Salary: 25000

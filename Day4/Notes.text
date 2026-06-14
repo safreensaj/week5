@@ -1,0 +1,77 @@
+What are Modules?
+“Modules are used to divide code into separate files.
+Each module does one specific task.
+This makes the project clean, easy to manage, reusable, and easy to debug.
+In Node.js, we can import modules using require() and export using module.exports.”
+
+Types of Modules
+“There are mainly 3 types of modules in Node.js:
+Core Modules, Local Modules, and Third-party Modules.”
+
+What are Core Modules?
+“Core modules are built-in modules in Node.js. We don’t need to install them. We can directly use them using require(). Example: fs, path, os.”
+What are Local Modules?
+“Local modules are modules created by us in our project. We export using module.exports and import using require().”
+What are Third-party Modules?
+ “Third-party modules are modules created by other developers. We install them using npm and use them in our project. Example: express, lodash.”
+
+Import using require() (CommonJS)
+ “In CommonJS, we use require() to import modules into another file.”
+
+ Export using module.exports
+“module.exports is used to send code from one file so it can be used in another file.”
+
+Intro to ES Modules (import / export)
+“ES Modules are the modern JavaScript module system.
+We use import and export instead of require() and module.exports.”
+
+“CommonJS uses require() and module.exports.
+ES Modules use import and export.
+ES Modules are the modern JavaScript module system.”
+
+Difference between CommonJS and ES Modules?
+ “CommonJS uses require() and module.exports and works synchronously. ES Modules use import and export and are modern and asynchronous.”
+
+ View Engine &amp; Dynamic Rendering
+ “A View Engine is used in backend applications to create dynamic HTML pages.
+It helps us send data from the server to the frontend page.”
+
+What is Dynamic Rendering?
+“Dynamic rendering means showing different data on the webpage dynamically from the backend.”
+
+Why Use View Engine?
+“We use View Engines to create dynamic webpages instead of static HTML pages.”
+
+Benefits
+Dynamic data display
+Cleaner code
+Reusable templates
+Easy frontend + backend connection
+
+Popular View Engines
+View Engine	Syntax
+EJS	<%= %>
+Pug	indentation style
+Handlebars	{{ }}
+
+“A View Engine helps create dynamic HTML pages using backend data.”
+
+Passing Data with res.render()
+“res.render() is used to send data from the backend to a View Engine file like EJS.”
+
+What is the views Folder?
+“views is a special folder where Express looks for EJS files.”
+
+Example Structure
+project/
+│
+├── app.js
+│
+├── views/
+│     ├── home.ejs
+│     └── profile.ejs
+
+
+What is .ejs File?
+“.ejs means Embedded JavaScript.
+It allows us to write HTML and JavaScript together.”

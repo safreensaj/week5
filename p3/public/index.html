@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fetch Data</h1>
+    <button id="mybtn" onclick="fetchmessage()"></button>
+    <div id="display"></div>
+    <script>
+        function fetchmessage(){
+            fetch=("http://localhost:3000")
+            .then (responce=>response.text())
+            .then(data=>{
+                document.getElementById("display").innerText=data
+            })
+            .catch(error=>{
+                console.error("Error: ",error)
+                document.getElementById("display").innerText="Failed to fetch from server"
+            })
+        }
+    </script>
+</body>
+</html>

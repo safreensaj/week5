@@ -1,0 +1,191 @@
+What is a Package?
+A package is a ready-made collection of code created by other developers.
+👉 You don’t have to write everything from scratch
+👉 You can reuse their code to save time
+A package is a ready-made code created by someone else that you can use in your project.
+
+What is npm?
+npm stands for:
+👉 Node Package Manager
+npm is a tool used to install, manage, and share packages in Node.js
+
+What is npm init?
+ It is used to create a new project and generate package.json.
+
+What is package.json?
+ package.json is a file that stores information about your project
+What is package-lock.json?
+ package-lock.json is a file that locks the exact version of packages
+
+package.json stores project details and dependencies, while package-lock.json locks 
+exact versions for consistency.
+
+What is Express.js?
+ Express is a Node.js framework used to build servers and APIs easily.
+
+What Express can do?
+ Using Express, you can:
+Create a server
+Handle routes (/, /about, /contact)
+Send response (text, JSON, HTML)
+Build APIs
+
+“Why Express?”
+Because it reduces code and makes server creation faster and easier.
+
+What is Routing in Express?
+Routing means:
+When user visits a URL, Express decides which code should run.
+
+User ഏത് URL visit ചെയ്യുന്നു എന്ന് നോക്കി, ഏത് response കൊടുക്കണം എന്ന് decide ചെയ്യുന്നതാണ് routing.
+
+Example:
+app.get("/", (req, res) => {
+  res.send("Home Page");
+});
+
+Different HTTP Methods
+
+app.get("/users", (req, res) => {
+  res.send("Get users");
+});
+
+app.post("/users", (req, res) => {
+  res.send("Create user");
+});
+
+app.put("/users/:id", (req, res) => {
+  res.send("Update user");
+});
+
+app.delete("/users/:id", (req, res) => {
+  res.send("Delete user");
+});
+
+
+
+Explain why route order matters in Express.
+Express routes മുകളിൽ നിന്ന് താഴേക്ക് check ചെയ്യും
+
+👉 ആദ്യം match ചെയ്യുന്ന route run ചെയ്യും
+
+👉 അതുകൊണ്ട്:
+Specific route ആദ്യം
+Dynamic route പിന്നെ
+:id എന്നത് എന്ത് value വന്നാലും match ചെയ്യും
+അതുകൊണ്ട് അത് താഴെ എഴുതണം
+1️⃣ /users/new
+
+👉 ഇത് fixed route ആണ്
+👉 “new” എന്ന exact word match ആകണം
+
+Example:
+
+/users/new  ✅ match
+/users/10   ❌ match അല്ല
+2️⃣ /users/:id
+
+👉 ഇത് dynamic route ആണ്
+
+👉 :id → എന്ത് value ആയാലും accept ചെയ്യും
+
+Example:
+
+/users/1    ✅
+/users/10   ✅
+/users/abc  ✅
+/users/new  ✅ 😱 (ഇതും match ചെയ്യും!)
+
+Dynamic routes like :id can match many values, so they should be placed after specific 
+routes like /new to avoid incorrect matching.
+
+Query parameters = key-value pairs in URL
+
+Query Parameters എന്താണ്?
+URL-ന്റെ അവസാനം വരുന്ന extra data ആണ്
+
+
+Handling unmatched routes (404 error handling)
+Handling unmatched routes means:User types a URL that we didn’t create.
+404 route always write last.
+Because Express checks routes top to bottom.
+Example:
+app.use((req, res) => {
+  res.status(404).send("404 Page Not Found");
+});
+
+Sending different types of responses (JSON, HTML, Text)
+What is “Sending different types of responses”?
+
+👉 Server (Express) client-ന് different format data അയക്കാം:
+
+Text (simple message)
+HTML (web page)
+JSON (data for apps)
+🔸 1. TEXT Response
+Code:
+app.get("/text", (req, res) => {
+  res.send("Hello World");
+});
+ഇത് plain text ആണ് (just message)
+2. HTML Response
+Code:
+app.get("/html", (req, res) => {
+  res.send("<h1>Welcome</h1><p>This is a page</p>");
+});
+What happens?
+
+👉 Browser renders like a webpage:
+
+Welcome
+This is a page
+
+Malayalam:
+
+👉 Browser ഇത് HTML ആയി കാണിക്കും
+(h1 → heading, p → paragraph)
+3. JSON Response
+Code:
+app.get("/json", (req, res) => {
+  res.json({ name: "Safreen", age: 20 });
+});
+What happens?
+
+👉 Output:
+
+{
+  "name": "Safreen",
+  "age": 20
+}
+Malayalam:
+
+👉 JSON data ആണ് → frontend (React, JS) use ചെയ്യാൻ easy
+
+🔥 Important Difference (Very Easy)
+Type	Method	Use
+Text	res.send()	Message
+HTML	res.send()	Web page
+JSON	res.json()	Data
+
+What are Route Parameters?
+
+👉 Route Parameters = URL-il dynamic value pass cheyyan use cheyyunnathu
+
+👉 Example URL:
+
+/user/10
+
+👉 ഇവിടെ 10 → dynamic value
+
+🔸 How to write in Express?
+app.get("/user/:id", (req, res) => {
+  res.send("User ID is " + req.params.id);
+});
+Multiple parameters
+app.get("/product/:name/:price", (req, res) => {
+  res.send(`Product: ${req.params.name}, Price: ${req.params.price}`);
+});
+URL:
+/product/apple/50
+Output:
+Product: apple, Price: 50

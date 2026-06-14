@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    <h1>LOGIN FORM</h1>
+    <form id="form">
+<input type="text" name="userName">
+<br><br>
+<input type="password" name="password">
+<br><br>
+<button type="submit">Login</button>
+    </form>
+    <div id="result"></div>
+    <script>
+        const form=document.getElementById("form");
+        const result=document.getElementById("result");
+        form.addEventListener("submit",async(e)=>{
+            e.preventDefault();
+            const formData=new FormData(form);
+            const data=new URLSearchParams(formData);
+            const response= await fetch("http://localhost:3000/login",{
+                method:'post',
+                headers:{'Content-type':'application/x-www-form-urlencoded'},
+                body:data
+            })
+            const text=await response.text();
+            result.innerText=text;
+        })
+    </script>
+    
+</body>
+</html>
