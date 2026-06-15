@@ -1,0 +1,220 @@
+What is a Server?
+A server is a computer that provides data or services to other computers over a network.
+
+A server is a system that provides data or services to other computers over a network.
+
+How Can a Computer Become a Server?
+Any computer can become a server  when it runs server software that listens for requests 
+and sends responses.
+
+Localhost vs Remote Server 
+Localhost means:
+Your own computer acting as a server
+
+It runs inside your system
+Only you can access it
+Used for testing / learning
+
+Example:
+
+http://localhost:3000
+
+localhost = your computer
+3000 = port
+
+Remote Server means:
+A server somewhere else (not your computer)
+
+Connected through internet
+Anyone can access it
+Used for real websites
+
+Example:
+
+https://www.google.com
+
+Google server is not in your computer
+It is somewhere in the world 
+
+Localhost is a server running on your own computer, while a remote server is hosted 
+on another machine and accessed over the internet.
+
+What is a PORT?
+A port is a number that acts as an entry point on a server to send and receive data. 
+Computer has many ports. Each port is used for different  services
+Example
+http://localhost:3000
+localhost → computer
+3000 → port (door)
+
+Default Ports (Very Important)
+
+Already fixed ports (common services use these)
+
+Port	Use
+80	HTTP (normal websites)
+443	HTTPS (secure websites 🔒)
+3000	Node.js apps (common)
+5000	Testing apps
+21 FTP	
+
+When you open:
+
+https://google.com
+
+👉 Automatically uses port 443
+
+Custom Ports
+You can choose your own port number
+
+📌 Example:
+localhost:3000
+localhost:5000
+localhost:8000
+
+👉 Developers use custom ports for:
+testing
+apps
+APIs
+
+HTTP Request Basics
+An HTTP request is sent by the client to the server to ask for data, and the server 
+responds with the requested data.
+
+Method	Work	Simple Meaning
+GET	Read	Get data
+POST	Create	Add data
+PUT	Update	Change data
+DELETE	Remove	Delete data
+
+CRUD = Create, Read, Update, Delete
+
+A server receives HTTP requests from clients. These requests include methods 
+like GET, POST, PUT, DELETE and contain a URL, headers, and optionally a body.
+
+What Kind of Requests Does a Server Receive?
+A server mainly receives HTTP Requests
+
+These requests come from:
+Browser
+Mobile apps
+Other servers
+
+Structure of HTTP Request
+Every request has 3 important parts
+1️⃣ URL (Endpoint)
+2️⃣ Headers
+ Extra information about request
+3️⃣ Body
+Actual data you send
+
+Most Common Content-Types
+1. JSON
+Content-Type: application/json
+2. HTML
+Content-Type: text/html
+Web pages (HTML files)
+3. Plain Text
+Content-Type: text/plain
+Simple text (no styling)
+4. Form Data (Normal Form)
+Content-Type: application/x-www-form-urlencoded
+Login / signup form data
+5. Multipart (File Upload)
+Content-Type: multipart/form-data
+Image / file upload ചെയ്യുമ്പോൾ
+7. Images
+Content-Type: image/png
+Content-Type: image/jpeg
+Images അയയ്ക്കുമ്പോൾ
+8. JavaScript
+Content-Type: application/javascript
+JS files
+Content-Type does not have a fixed number. It has many types, but common ones include 
+application/json, text/html, text/plain, multipart/form-data, and application/x-www-form-urlencoded.
+
+Used in POST/PUT
+
+What Does the Server Send Back? (HTTP Response)
+An HTTP response is the data sent by the server back to the client after receiving 
+a request.
+An HTTP response is sent by the server to the client and contains a status 
+code (result of the request), headers (extra information), and a body (the actual 
+data such as HTML or JSON).
+Common Status Codes:
+Code	Meaning	Malayalam
+200	OK (success)	വിജയിച്ചു
+404	Not Found	കണ്ടില്ല
+500	Server Error	server error
+201	Created	create ചെയ്തു
+
+What is an API?
+An API (Application Programming Interface) is a set of rules that allows different 
+software applications to communicate with each other.
+
+Types of APIs 
+
+Public API	Anyone can use
+Private API	Only company use
+REST API	Most common (uses HTTP)
+
+How API Works (Simple Flow)
+
+1️⃣ You send request (using API)
+2️⃣ API takes request to server
+3️⃣ Server processes it
+4️⃣ API sends response back
+API = Clientക്കും Serverക്കും ഇടയിലെ messenger
+
+API = Bridge 🌉
+👉 Connects frontend ↔ backend
+
+👉 Without API:
+ No data communication
+
+What is Node.js?
+Node.js is a runtime environment that allows JavaScript to run outside the browser, 
+mainly used for building server-side applications.
+Node.js is fast, efficient, and good for handling many users at the same time.
+
+Node.js എന്നത് JavaScript browser-ന്റെ പുറത്തും run ചെയ്യാൻ സഹായിക്കുന്ന runtime environment 
+ആണ്, ഇത് mainly server-side applications നിർമ്മിക്കാൻ ഉപയോഗിക്കുന്നു.
+
+Key Features of Node.js:
+Key features of Node.js include asynchronous non-blocking operations, single-threaded 
+architecture, fast performance using the V8 engine, event-driven model, NPM for 
+packages, cross-platform support, and scalability.
+
+📱 Before Node.js (Important)
+JavaScript was only used in:
+Browser (Chrome, Firefox)
+You could only:
+make buttons
+change UI
+
+Cannot:
+create server
+read files
+build backend
+
+After Node.js
+Now JavaScript can:
+create servers
+work with files
+connect to database
+build backend apps
+
+What is Routing?
+Routing means:Showing different responses for different URLs
+Example:
+/ → Home page
+/about → About page
+/contact → Contact page
+👉 Server checks URL and decides what to send
+
+Routing in Node.js means handling different URLs and sending appropriate responses. 
+It can be implemented manually using req.url with conditional statements.
+
+Node.js-ൽ routing എന്നത് വിവിധ URL-കൾ handle ചെയ്ത് ശരിയായ response നൽകുന്നതാണ്. 
+ഇത് req.url ഉപയോഗിച്ച് manually implement ചെയ്യാം.
+

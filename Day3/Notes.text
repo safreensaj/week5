@@ -1,0 +1,119 @@
+What is Middleware? (Simple Idea)
+Middleware is a function that runs between the request and the response in an Express application.
+Middleware is powerful because it allows us to handle common logic like logging, authentication, and validation in one place.
+
+Why Middleware?
+1.Logging
+console.log(req.url);
+request evide ninnu varunnu enn nokkan
+2. Body parsing
+app.use(express.json());
+JSON data manassilaakkan
+3. Authentication
+Check user login
+4. Error handling
+
+app.use()
+app.use() is used to add middleware in an Express application. Middleware means a function that runs between the request and the response.
+Express-il app.use() middleware add cheyyan aanu use cheyyunnath. User request vannal, route response kodukkunnathinu munpe middleware run aakum.
+
+
+Difference between app.use() and app.get()
+app.use() runs for all HTTP methods and routes.
+app.get() runs only for GET requests of a specific route.
+
+Types of Middleware in Express
+There are mainly 3 types:
+1.Built-in Middleware
+Middleware that comes already inside Express
+No need to install anything
+Examples:
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+2.Application-level Middleware
+Middleware created by us using app.use() or app.get()
+Example:
+app.use((req, res, next) => {
+    console.log("Custom middleware");
+    next();
+});
+Interview Answer:
+Application-level middleware is created by the developer and applied using app.use() or route methods.
+3.Third-party Middleware
+Middleware installed using npm (external packages)
+Example:
+const cors = require('cors');
+app.use(cors());
+Interview Answer:
+Third-party middleware are external packages like cors, morgan, etc., installed via npm and used in Express.
+
+Order of Middleware Execution
+Middleware in Express runs in the order it is defined (top → bottom).
+
+express.json() and express.urlencoded()
+express.json()-Middleware to read JSON data
+express.urlencoded()-Middleware to read form data
+express.json() is used to parse JSON request bodies, while express.urlencoded() is used to parse form data sent from HTML forms. Both are built-in middleware in Express and make the data available in req.body.
+
+app.use(express.urlencoded({ extended: true }));
+extended: true vechāl nested data object aayi convert cheyyum
+extended: true allows Express to parse nested objects in form data, while extended: false only supports simple key-value pairs.
+
+What is express.static() ?
+express.static() is used to serve static files like HTML, CSS, JS, images.
+
+What are Static Files?
+Files that don’t change:
+HTML
+CSS
+JavaScript
+Images
+fixed files (change aavatha files)
+express.static() is a built-in middleware used to serve static files like HTML, CSS, JavaScript, and images from a folder. It allows the browser to directly access these files without defining separate routes.
+express.static() use cheythu oru folder-il ullatha ella files browser-il access cheyyan pattum
+
+Serve static files in Express by setting up a public folder and using express.static() to access
+HTML, CSS, and JS files.
+Static files in Express are served using express.static() middleware. We create a public folder and place HTML, CSS, and JavaScript files inside it. Then Express makes these files accessible directly through the browser without defining separate routes.
+
+What is a Router?
+Router എന്നത് routes separate files ആയി divide ചെയ്യാൻ സഹായിക്കുന്ന system ആണ്
+Router is a feature in Express used to organize routes into separate files. It helps make the application clean and manageable.
+Router ഉപയോഗിച്ച് നമുക്ക് routes separate files ആക്കി manage ചെയ്യാം. ഇത് code clean ആക്കാനും easy maintain ചെയ്യാനും സഹായിക്കും.
+const express = require('express');
+const router = express.Router();
+express.Router() → പുതിയ router object create ചെയ്യുന്നു
+
+module.exports = router;
+ഈ router പുറത്തേക്ക് export ചെയ്യുന്നു
+
+const userRoutes = require('./users');
+app.use('/users', userRoutes);
+/users path വന്നാൽ users router handle ചെയ്യും
+
+Why split routes?
+We split routes into separate files to keep the code clean, organized, easy to maintain, and scalable. It also helps in team development.
+routes separate files ആക്കുന്നത് code clean ആക്കാനും, easy maintain ചെയ്യാനും, വലിയ projects handle ചെയ്യാനും സഹായിക്കും
+
+How to create separate route file?
+We create a router using express.Router(), define routes using router methods, export it, and then import and use it in the main app using app.use().
+express.Router() ഉപയോഗിച്ച് router create ചെയ്ത് routes define ചെയ്യാം, പിന്നെ export ചെയ്ത് main file-ൽ app.use() ഉപയോഗിച്ച് connect ചെയ്യാം
+
+How do you export and import router?
+We export the router using module.exports in the route file, then import it using require in the main file, and connect it using app.use().
+router file-ൽ module.exports ഉപയോഗിച്ച് export ചെയ്ത്, main file-ൽ require ഉപയോഗിച്ച് import ചെയ്ത് app.use() ഉപയോഗിച്ച് connect ചെയ്യാം
+
+What is mounting?
+Mounting means attaching a router or middleware to a specific path using app.use().
+Mounting എന്നത് router അല്ലെങ്കിൽ middleware ഒരു path-ലേക്ക് attach ചെയ്യുന്നതാണ്
+
+What is “Mount with app.use()”?
+app.use() = connect something to your app
+
+When we use router:
+app.use() = attach router to a path
+
+Mount എന്നത്:
+ഒരു router അല്ലെങ്കിൽ middleware ഒരു specific path-ലേക്ക് attach ചെയ്യുന്നത്
+

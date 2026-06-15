@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <form method="post" id="textform" action="http://localhost:3000/login">
+        <label>username</label>
+        <br>
+        <input name="username" type="text" placeholder="Enter name" required>
+        <br><br>
+        <label>Password</label>
+        <br>
+        <input type="password" name="password" placeholder="Enter email" required>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="display"></p>
+     <script>
+        const textform=document.getElementById('textform');
+        const display=document.getElementById("display");
+        textform.addEventListener('submit',async(e)=>{
+            e.preventDefault();
+            const formtext=new FormData(textform);
+            const data=new URLSearchParams(formtext)
+            const response=await fetch(`http://localhost:3000/login`,{
+                method:'POST',
+                headers:{
+                    'content-type':'application/x-www-form-urlencoded'
+                },body:data
+            });
+            const text=await response.text();
+            display.innerHTML=text
+
+            
+        })
+    </script> 
+</body>
+</html>
